@@ -33,6 +33,7 @@ metadata:
   name: nginx-service
 spec:
   type: LoadBalancer
+  sessionAffinity: ClientIP
   selector:
     app: nginx
   ports:
