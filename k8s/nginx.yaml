@@ -33,7 +33,6 @@ metadata:
   name: nginx-service
 spec:
   type: LoadBalancer
-  sessionAffinity: ClientIP
   selector:
     app: nginx
   ports:
@@ -41,38 +40,20 @@ spec:
       port: 80
       targetPort: 80
 ---
-apiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: app-ingress
   annotations:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/use-forwarded-headers: "true"  # 중요
-    nginx.ingress.kubernetes.io/forwarded-for-header: "X-Forwarded-For"
-    nginx.ingress.kubernetes.io/x-forwarded-proto: "https"
-    nginx.ingress.kubernetes.io/x-forwarded-host: "$host"
-    nginx.ingress.kubernetes.io/x-forwarded-port: "$server_port"
-    nginx.ingress.kubernetes.io/affinity: "cookie"
-    nginx.ingress.kubernetes.io/session-cookie-name: "route"
-    nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
+  labels:
+    app.kubernetes.io/managed-by: kargocd
+  name: nginx
 spec:
   rules:
-    - host: k1ec344612739a.user-app.krampoline.com
-      http:
+    - http:
         paths:
-          # 프론트엔드로 라우팅
           - path: /
             pathType: Prefix
             backend:
-              service:
-                name: react-service
-                port:
-                  number: 80
-          # 백엔드로 라우팅
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: spring-service
-                port:
-                  number: 80
+              serviceName: nginx-service
+              servicePort: 80
