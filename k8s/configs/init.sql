@@ -42,7 +42,6 @@ CREATE TABLE users
     user_role         VARCHAR(20)           NULL,
     nickname          VARCHAR(255)          NULL,
     profile_image_url VARCHAR(255)          NULL,
-    password          VARCHAR(255)          NULL,
     CONSTRAINT pk_users PRIMARY KEY (user_id)
 );
 
@@ -80,10 +79,10 @@ ALTER TABLE reservation
 ALTER TABLE seafood_collection
     ADD CONSTRAINT FK_SEAFOODCOLLECTION_ON_SEAFOOD FOREIGN KEY (seafood_id) REFERENCES seafood (seafood_id);
 
-INSERT INTO users (created_at, updated_at, email, nickname, password, profile_image_url, provider_id, provider_type,
-                   user_role)
-VALUES ('2024-11-04 16:41:34.059733', NULL, 'testuser@example.com', '김구름', '1234', 'http://example.com/profile.jpg',
-        '12345', 'local', 'USER');
+# INSERT INTO users (created_at, updated_at, email, nickname, password, profile_image_url, provider_id, provider_type,
+#                    user_role)
+# VALUES ('2024-11-04 16:41:34.059733', NULL, 'testuser@example.com', '김구름', '1234', 'http://example.com/profile.jpg',
+#         '12345', 'local', 'USER');
 
 INSERT INTO seafood (korean_name, english_name, description)
 VALUES ('전복', 'Abalone', '전복은 진주 빛 껍질과 영양 가득한 살을 지녀 고급 요리 재료로 손색이 없습니다.'),
@@ -126,16 +125,16 @@ VALUES ('제주 서귀포 사계어촌체험마을', '안전교육, 환복, 물�
         126.1793415);
 
 
-INSERT INTO seafood_collection (created_at, seafood_id, updated_at, user_id)
-VALUES ('2024-11-04 16:40:50.179534', 1, NULL, 1);
-INSERT INTO seafood_collection (created_at, seafood_id, updated_at, user_id)
-VALUES ('2024-11-04 16:40:50.179534', 2, NULL, 1);
-INSERT INTO seafood_collection (created_at, seafood_id, updated_at, user_id)
-VALUES ('2024-11-04 16:40:50.179534', 3, NULL, 1);
-INSERT INTO seafood_collection (created_at, seafood_id, updated_at, user_id)
-VALUES ('2024-11-04 16:40:50.179534', 4, NULL, 1);
-INSERT INTO seafood_collection (created_at, seafood_id, updated_at, user_id)
-VALUES ('2024-11-04 16:40:50.179534', 5, NULL, 1);
+# INSERT INTO seafood_collection (created_at, seafood_id, updated_at, user_id)
+# VALUES ('2024-11-04 16:40:50.179534', 1, NULL, 1);
+# INSERT INTO seafood_collection (created_at, seafood_id, updated_at, user_id)
+# VALUES ('2024-11-04 16:40:50.179534', 2, NULL, 1);
+# INSERT INTO seafood_collection (created_at, seafood_id, updated_at, user_id)
+# VALUES ('2024-11-04 16:40:50.179534', 3, NULL, 1);
+# INSERT INTO seafood_collection (created_at, seafood_id, updated_at, user_id)
+# VALUES ('2024-11-04 16:40:50.179534', 4, NULL, 1);
+# INSERT INTO seafood_collection (created_at, seafood_id, updated_at, user_id)
+# VALUES ('2024-11-04 16:40:50.179534', 5, NULL, 1);
 
 INSERT INTO `reservation` (created_at, updated_at, name, number_of_people, reservation_date, reservation_time, status,
                            user_id, place_id)
