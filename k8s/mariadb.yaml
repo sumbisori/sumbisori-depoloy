@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mariadb
-  namespace: chlwndks3-namespace
 spec:
   serviceName: mariadb
   selector:
