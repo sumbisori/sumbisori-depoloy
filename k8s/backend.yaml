@@ -23,18 +23,18 @@ spec:
               value: jdbc:mariadb://mariadb:3306/sumbisori
             - name: JWT_SECRET
               valueFrom:
-                secretKeyRef:
-                  name: backend-secrets  # Secret의 이름
+                configMapKeyRef:
+                  name: backend-config
                   key: JWT_SECRET
             - name: KAKAO_CLIENT_ID
               valueFrom:
-                secretKeyRef:
-                  name: backend-secrets  # Secret의 이름
+                configMapKeyRef:
+                  name: backend-config
                   key: KAKAO_CLIENT_ID
             - name: KAKAO_CLIENT_SECRET
               valueFrom:
-                secretKeyRef:
-                  name: backend-secrets  # Secret의 이름
+                configMapKeyRef:
+                  name: backend-config
                   key: KAKAO_CLIENT_SECRET
           resources:
             requests:
