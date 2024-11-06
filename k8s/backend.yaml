@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: chlwndks3-namespace  # 네임스페이스 변경
 spec:
   selector:
     matchLabels:
@@ -13,7 +12,6 @@ spec:
       labels:
         app: backend
     spec:
-      serviceAccountName: chlwndks3-sa
       containers:
         - name: backend
           # 여러분의 backend image 주소를 입력해주세요.
@@ -25,17 +23,17 @@ spec:
               value: jdbc:mariadb://mariadb:3306/sumbisori
             - name: JWT_SECRET
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: backend-secrets
                   key: JWT_SECRET
             - name: KAKAO_CLIENT_ID
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: backend-secrets
                   key: KAKAO_CLIENT_ID
             - name: KAKAO_CLIENT_SECRET
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: backend-secrets
                   key: KAKAO_CLIENT_SECRET
           resources:
