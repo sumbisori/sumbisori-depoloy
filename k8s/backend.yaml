@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: chlwndks3-namespace
 spec:
   selector:
     matchLabels:
@@ -13,7 +12,6 @@ spec:
       labels:
         app: backend
     spec:
-      serviceAccountName: chlwndks3-sa
       containers:
         - name: backend
           # 여러분의 backend image 주소를 입력해주세요.
