@@ -1,4 +1,4 @@
-namespace: default
+namespace: chlwndks3-namespace
 resources:
   - nginx.yaml
   - mariadb.yaml
