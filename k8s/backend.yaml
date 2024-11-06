@@ -12,7 +12,6 @@ spec:
       labels:
         app: backend
     spec:
-      serviceAccountName: chlwndks3-sa
       containers:
         - name: backend
           image: krmp-d2hub-idock.9rum.cc/dev-test/repo_62e68325c22b
