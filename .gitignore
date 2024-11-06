@@ -36,4 +36,4 @@ out/
 ### VS Code ###
 .vscode/
 
-backend-secrets.yaml
+backend-config.yaml
