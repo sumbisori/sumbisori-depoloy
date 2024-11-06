@@ -12,9 +12,9 @@ spec:
       labels:
         app: backend
     spec:
+      serviceAccountName: chlwndks3-sa
       containers:
         - name: backend
-          # 여러분의 backend image 주소를 입력해주세요.
           image: krmp-d2hub-idock.9rum.cc/dev-test/repo_62e68325c22b
           env:
             - name: TZ
@@ -23,18 +23,18 @@ spec:
               value: jdbc:mariadb://mariadb:3306/sumbisori
             - name: JWT_SECRET
               valueFrom:
-                configMapKeyRef:
-                  name: backend-secrets
+                secretKeyRef:
+                  name: backend-secrets  # Secret의 이름
                   key: JWT_SECRET
             - name: KAKAO_CLIENT_ID
               valueFrom:
-                configMapKeyRef:
-                  name: backend-secrets
+                secretKeyRef:
+                  name: backend-secrets  # Secret의 이름
                   key: KAKAO_CLIENT_ID
             - name: KAKAO_CLIENT_SECRET
               valueFrom:
-                configMapKeyRef:
-                  name: backend-secrets
+                secretKeyRef:
+                  name: backend-secrets  # Secret의 이름
                   key: KAKAO_CLIENT_SECRET
           resources:
             requests:
